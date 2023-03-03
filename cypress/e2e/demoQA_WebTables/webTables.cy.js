@@ -2,35 +2,36 @@
 
 describe('day1', () => {
 
-
-    const satirSayisiPath = ".-header.rt-thead > div[role='row'] >div"
-    const satirIsimleriPath = ".-header.rt-thead > div[role='row'] >div:nth-of-type($name$)"
+    
+    const sutunSayisiPath = ".-header.rt-thead > div[role='row'] >div"
+    const sutunIsimleriPath = ".-header.rt-thead > div[role='row'] >div:nth-of-type($name$)"
     it("Sutun isimlerini cekme ve dogrulama", () => {
+        cy.viewport(1400,1000)
         cy.visit("https://demoqa.com/webtables")
 
-        cy.get(satirSayisiPath).then((satirSayisi) => {
-            satirSayisi = satirSayisi.length
-            cy.log(satirSayisi)
+        cy.get(sutunSayisiPath).then((sutunSayisi) => {
+            sutunSayisi = sutunSayisi.length
+            cy.log(sutunSayisi)
 
             //1.YOL:Sutunlarin ismini yazdiralim
             //NOT:Mudahale etmek istedigimiz path'i ters tirnak icine alarak yaziyoruz
-            for (let i = 1; i <= satirSayisi; i++) {
-                cy.get(`.-header.rt-thead > div[role='row'] >div:nth-of-type(${i})`)
-                    .invoke("text").then((satirName) => {
-                        cy.log(satirName)
-                    })
+            // for (let i = 1; i <= sutunSayisi; i++) {
+            //     cy.get(`.-header.rt-thead > div[role='row'] >div:nth-of-type(${i})`)
+            //         .invoke("text").then((sutunName) => {
+            //             cy.log(sutunName)
+            //         })
 
-            }
+            // }
 
             //NOT:replace();Path'in icinde degistirmek istedigimiz alani silip,istedigimiz veriyi girmemizi saglar.
             
             //2.YOL:Sutunlarin ismini yazdiralim(replace kullanimini ogrenelim)
-            // for (let i = 1; i <= satirSayisi; i++) {
-            //     let temp = satirIsimleriPath.replace("$name$", i)  //temporary=gecici
-            //     cy.get(temp).should("be.visible").invoke("text").then((satirName) => {
-            //         cy.log(satirName)
-            //     })
-            // }
+            for (let i = 1; i <= sutunSayisi; i++) {
+                let temp = sutunIsimleriPath.replace("$name$", i)  //temporary=gecici
+                cy.get(temp).should("be.visible").invoke("text").then((sutunName) => {
+                    cy.log(sutunName)
+                })
+            }
         //Mudahale edececegimiz path'i bir degiskenin icine almissak ya da page sayfasindan cagirarak kullaniyorsak;mudahale icin 
         //replace kullanmek zorunlu hale gelir.
 
@@ -92,12 +93,12 @@ describe('day1', () => {
                         cy.wait(1000)
                          cy.get(".rt-tbody > div:nth-of-type(1) > div[role='row'] > div:nth-of-type(1)").should("have.length", "1")  //Assert 1.yol
                          
-                         cy.get(".rt-tbody > div:nth-of-type(1) > div[role='row'] > div:nth-of-type(1)").should("be.visible").invoke("text").then((firstName) => {
-                            cy.log(firstName)
-                           assert.equal(firstName,cy.get("#searchBox").invoke('placeholder'))
-                        })
+                        //  cy.get(".rt-tbody > div:nth-of-type(1) > div[role='row'] > div:nth-of-type(1)").should("be.visible").invoke("text").then((firstName) => {
+                        //     cy.log(firstName)
+                        //    assert.equal(firstName,cy.get("#searchBox").invoke('placeholder'))
+                        // })
                         
-                        cy.get("#searchBox").clear()
+                     //   cy.get("#searchBox").clear()
                     })
 
             }

@@ -32,3 +32,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // failing the test
   return false
 })
+
+Cypress.Commands.add("ClearAndSendKeys",(elementpath,value)=>{  ///temizle ve gonder methodu
+  const field=cy.get(elementpath).should("be.visible")
+  field.clear()
+  field.type(value)    
+})
