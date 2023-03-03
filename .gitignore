@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+#Cypress stuff to ignore
+videos/
+cypress/results/
+cypress/screenshots/
+cypress/hars/
+cypress/downloads/
+mochawesome-report/
+mochawesome.json
+test-results
+node_modules/
+.env
+.DS_Store
