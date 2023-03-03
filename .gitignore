@@ -11,6 +11,6 @@ cypress/downloads/
 mochawesome-report/
 mochawesome.json
 test-results
-node_modules/
+node_modules/*
 .env
 .DS_Store
