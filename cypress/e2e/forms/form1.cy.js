@@ -1,11 +1,16 @@
 
-// import fakeData from '../../fixtures/fakeData.json'
+import fakeData from '../../fixtures/fakeData.json'
 describe('forms', () => {
-    let fakeData
+
+
+    let data3
+
     before(() => {
 
         cy.generateFixture()
-        fakeData = require('../../fixtures/fakeData.json')
+        cy.fixture('fakeData').then(data=>{
+            data3=data
+        })
     })
 
     it('first part', () => {
@@ -13,11 +18,14 @@ describe('forms', () => {
         cy.get('.category-cards> div:nth-child(2)').click()
         cy.wait(1000)
         cy.get('.element-list.collapse.show').click()
-        cy.get('#firstName').type(fakeData.firstName).should('have.value', fakeData.firstName)
-            .and('be.visible')
-            .and('exist')
+        cy.fixture('fakeData').then(data => {
 
-        cy.get('#lastName').type(fakeData.lastName).should('have.value', fakeData.lastName)
+            cy.get('#firstName').type(data.firstName).should('have.value', data.firstName)
+                .and('be.visible')
+                .and('exist')
+        })
+
+        cy.get('#lastName').type(data3.lastName).should('have.value', data3.lastName)
             .and('not.have.value', fakeData.firstName)
             .and('be.visible')
             .and('exist')
