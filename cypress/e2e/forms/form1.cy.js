@@ -1,9 +1,14 @@
 
-import fakeData from '../../fixtures/fakeData.json'
+// import fakeData from '../../fixtures/fakeData.json'
 describe('forms', () => {
+    let fakeData
+    before(() => {
+
+        cy.generateFixture()
+        fakeData = require('../../fixtures/fakeData.json')
+    })
 
     it('first part', () => {
-        // cy.generateFixture()
         cy.visit('https://demoqa.com/')
         cy.get('.category-cards> div:nth-child(2)').click()
         cy.wait(1000)
@@ -52,17 +57,23 @@ describe('forms', () => {
 
         cy.get('.subjects-auto-complete__value-container').type('a')
 
-        cy.get('.subjects-auto-complete__menu-list--is-multi > div').each((element,index,list)=>{
+        cy.get('.subjects-auto-complete__menu-list--is-multi > div').each((element, index, list) => {
             cy.log(element.text())
-            cy.wrap(element.text().toLowerCase()).should('contain','a')
-          
+            cy.wrap(element.text().toLowerCase()).should('contain', 'a')
+
         })
         cy.get('.subjects-auto-complete__menu-list--is-multi > div').first().click()
 
 
 
-        cy.get("[id^='hobbies-checkbox-']").check({force:true}).should('be.checked')
-        cy.get("[id^='hobbies-checkbox-']").uncheck({force:true}).should('not.be.checked')
+        cy.get("[id^='hobbies-checkbox-']").check({ force: true }).should('be.checked')
+        cy.get("[id^='hobbies-checkbox-']").uncheck({ force: true }).should('not.be.checked')
+
+
+        cy.get('#uploadPicture').attachFile('flagCanada.png').should('contain.value', 'flagCanada.png')
+
+
+        cy.get('#currentAddress').type(fakeData.address).should('have.value', fakeData.address)
 
 
     });

@@ -14,6 +14,7 @@ const generataFixture = () => {
         mobileNumber: `${faker.phone.phoneNumber('4891######')}`,//+48 91 463 61 70
         dateOfBirth: `${moment().format("DD MMM YYYY")}`,
         subject: `${faker.company.companyName()}`,
+        address:`${faker.address.streetAddress()}`
     })
 }
 
