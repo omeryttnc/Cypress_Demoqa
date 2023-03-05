@@ -28,13 +28,22 @@
 import 'cypress-file-upload';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
-  // returning false here prevents Cypress from
-  // failing the test
-  return false
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
 })
 
-Cypress.Commands.add("ClearAndSendKeys",(elementpath,value)=>{  ///temizle ve gonder methodu
-  const field=cy.get(elementpath).should("be.visible")
-  field.clear()
-  field.type(value)    
+Cypress.Commands.add("ClearAndSendKeys", (elementpath, value) => {  ///temizle ve gonder methodu
+    const field = cy.get(elementpath).should("be.visible")
+    field.clear()
+    field.type(value)
 })
+
+
+
+
+// -------------------- ui ------------------------------
+
+import utils from './utils';
+
+Cypress.Commands.add('generateFixture', utils.generataFixture)
