@@ -9,15 +9,16 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.31.2",
+    "cypress": "^12.7.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.2.3",
-    "cypress": "^12.7.0",
+    "cypress-multi-reporters": "^1.5.0",
     "cypress-plugin-api": "^2.10.0",
+    "cypress-plugin-tab": "^1.0.5",
     "cypress-xpath": "^2.0.1",
     "faker": "^5.5.3",
-    "mysql": "^2.18.1",
-    "cypress-multi-reporters": "^1.5.0",
-    "cypress-plugin-tab": "^1.0.5",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "mysql": "^2.18.1"
   }
 }
