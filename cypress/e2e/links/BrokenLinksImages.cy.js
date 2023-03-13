@@ -21,7 +21,7 @@ describe('bkn link',()=>{
         
         //valid link
         cy.get('[href="http://demoqa.com"]').click({force:true})
-    
+    cy.go('back')
     
         // broken link
         cy.get('[href="http://the-internet.herokuapp.com/status_codes/500"]').click({force:true})
