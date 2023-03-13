@@ -22,7 +22,7 @@ function queryTestDb(query, config) {
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   hideXHR: true,
-
+  "chromeWebSecurity": false ,
   e2e: {
     watchForFileChanges: false,
 
