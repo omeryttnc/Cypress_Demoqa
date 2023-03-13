@@ -5,5 +5,8 @@ class HomePage{
     homePageVisit(){
         return cy.visit("https://demoqa.com/")
     }
+    homePageLinks(){
+        return cy.get("(//li[@id='item-5'])[1]")
+    }
 }
 export default HomePage
